@@ -7,7 +7,7 @@
 
 [![Actions Status](https://github.com/LamkasDev/chocola/workflows/Build/badge.svg)](https://github.com/LamkasDev/chocola/actions)
 [![Downloads](https://img.shields.io/github/downloads/LamkasDev/chocola/total.svg?style=flat-square)](https://github.com/LamkasDev/chocola/releases)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%LamkasDev%chocola.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FLamkasDev%2Fchocola?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FLamkasDev%2Fchocola.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FLamkasDev%2Fchocola?ref=badge_shield)
 [![PayPal](https://img.shields.io/badge/PayPal-Donate-brightgreen?style=flat-square)](https://www.paypal.me/LamkasDev)
 
 Chocola is an extensible and privacy-focused web browser with a totally different user experience, built on top of `Electron` and `React`. It aims to be fast, private, beautiful, extensible and functional.
