@@ -112,6 +112,11 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@canvas/image-data@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@canvas/image-data/-/image-data-1.0.0.tgz#3bd2cd856e13fc9e2c25feff360a4056857b0367"
+  integrity sha512-BxOqI5LgsIQP1odU5KMwV9yoijleOPzHL18/YvNqF9KFSGF2K/DLlYAbDQsWqd/1nbaFuSkYD/191dpMtNh4vw==
+
 "@cliqz/adblocker-content@^1.19.0":
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/@cliqz/adblocker-content/-/adblocker-content-1.19.0.tgz#c3e8ce50a719905cfcb66b114882c086b5074131"
@@ -2240,20 +2245,22 @@ decamelize@^1.2.0:
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
 
-decode-bmp@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/decode-bmp/-/decode-bmp-0.1.0.tgz#a7a0ad133dcdc717a437132e86fd91124254d090"
-  integrity sha512-i7ImaOawHIwQNIt3IpO8X04ZRGI4A7gqX3vPw5aMIqMwsAk5xs/pnWLKmXc97nII5rSGJB9QyauO5FwctFiYoQ==
+decode-bmp@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/decode-bmp/-/decode-bmp-0.2.1.tgz#cec3e0197ec3b6c60f02220f50e8757030ff2427"
+  integrity sha512-NiOaGe+GN0KJqi2STf24hfMkFitDUaIoUU3eKvP/wAbLe8o6FuW5n/x7MHPR0HKvBokp6MQY/j7w8lewEeVCIA==
   dependencies:
-    to-data-view "^1.0.0"
+    "@canvas/image-data" "^1.0.0"
+    to-data-view "^1.1.0"
 
-decode-ico@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/decode-ico/-/decode-ico-0.3.1.tgz#8ef97be1c8507761a8e14c5b5c732b29d4c102a2"
-  integrity sha512-Ejv981YSYeAVyebE+g/Z/3hhE9wLE0uOBmiglqnhRfVMbLu1mf0CCesOoFWjdDqDYBOWIYLHJ6+uQxjlID3FEg==
+decode-ico@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/decode-ico/-/decode-ico-0.4.0.tgz#ce89e75af3f4d0db85946236aaf817182d6fa89f"
+  integrity sha512-QEYWYYsfpch201aR9UlLwHYFgtBIfm+BHpkJHznOkl1n3xMyr+s6SJF48fxUQKzRwfp9pnSWnv+EG4ArVjDP+A==
   dependencies:
-    decode-bmp "^0.1.0"
-    to-data-view "^1.0.0"
+    "@canvas/image-data" "^1.0.0"
+    decode-bmp "^0.2.0"
+    to-data-view "^1.1.0"
 
 decode-uri-component@^0.2.0:
   version "0.2.0"
@@ -3240,10 +3247,15 @@ file-type@16.0.1:
     token-types "^2.0.0"
     typedarray-to-buffer "^3.1.5"
 
-file-type@^12.0.0:
-  version "12.4.2"
-  resolved "https://registry.yarnpkg.com/file-type/-/file-type-12.4.2.tgz#a344ea5664a1d01447ee7fb1b635f72feb6169d9"
-  integrity sha512-UssQP5ZgIOKelfsaB5CuGAL+Y+q7EmONuiwF3N5HAH0t27rvrttgi6Ra9k/+DVaY9UF6+ybxu5pOXLUdA8N7Vg==
+file-type@^14.6.2:
+  version "14.7.1"
+  resolved "https://registry.yarnpkg.com/file-type/-/file-type-14.7.1.tgz#f748732b3e70478bff530e1cf0ec2fe33608b1bb"
+  integrity sha512-sXAMgFk67fQLcetXustxfKX+PZgHIUFn96Xld9uH8aXPdX3xOp0/jg9OdouVTvQrf7mrn+wAa4jN/y9fUOOiRA==
+  dependencies:
+    readable-web-to-node-stream "^2.0.0"
+    strtok3 "^6.0.3"
+    token-types "^2.0.0"
+    typedarray-to-buffer "^3.1.5"
 
 file-uri-to-path@1.0.0:
   version "1.0.0"
@@ -4053,17 +4065,17 @@ humanize-plus@^1.8.1:
   resolved "https://registry.yarnpkg.com/humanize-plus/-/humanize-plus-1.8.2.tgz#a65b34459ad6367adbb3707a82a3c9f916167030"
   integrity sha1-pls0RZrWNnrbs3B6gqPJ+RYWcDA=
 
-icojs@^0.14.0:
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/icojs/-/icojs-0.14.0.tgz#604a7515fb14734d49745f9ae22678176dc9d13a"
-  integrity sha512-ili+b2P492H9loo+jTy1YvIkWThf/0ZUsDKllgxpZtKU9uRO2i0eWPO76uMAhhnhbdLmUHGCQbki5wF9vGbvxQ==
+icojs@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/icojs/-/icojs-0.16.0.tgz#31217c3031a55bc1cd7ea07b92fa04d995997e57"
+  integrity sha512-Nc9/UcTDhqDuFJqJu9UjU90GbZxHlC8O86CjHNB0zVpAOEhCgDabhSuPo84jZGs6wy0Mc5C99rRjSNpVZdZZPw==
   dependencies:
     bmp-js "0.1.0"
-    decode-ico "^0.3.1"
-    file-type "^12.0.0"
-    jpeg-js "^0.3.3"
-    pngjs "^3.3.3"
-    to-data-view "^1.0.0"
+    decode-ico "^0.4.0"
+    file-type "^14.6.2"
+    jpeg-js "^0.4.0"
+    pngjs "^5.0.0"
+    to-data-view "^1.1.0"
 
 iconv-lite@0.4.24:
   version "0.4.24"
@@ -4528,10 +4540,10 @@ jest-worker@^26.5.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
-jpeg-js@^0.3.3:
-  version "0.3.7"
-  resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.3.7.tgz#471a89d06011640592d314158608690172b1028d"
-  integrity sha512-9IXdWudL61npZjvLuVe/ktHiA41iE8qFyLB+4VDTblEsWBzeg8WQTlktdUK4CdncUqtUgUg0bbOmTE2bKBKaBQ==
+jpeg-js@^0.4.0:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.4.2.tgz#8b345b1ae4abde64c2da2fe67ea216a114ac279d"
+  integrity sha512-+az2gi/hvex7eLTMTlbRLOhH6P6WFdk2ITI8HJsaH2VqYO0I594zXSYEP+tf4FW+8Cy68ScDXoAsQdyQanv3sw==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
@@ -5783,10 +5795,10 @@ pkg-dir@^4.1.0:
   dependencies:
     find-up "^4.0.0"
 
-pngjs@^3.3.3:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-3.4.0.tgz#99ca7d725965fb655814eaf65f38f12bbdbf555f"
-  integrity sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==
+pngjs@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-5.0.0.tgz#e79dd2b215767fd9c04561c01236df960bce7fbb"
+  integrity sha512-40QW5YalBNfQo5yRYmiw7Yz6TKKVr3h6970B2YE+3fQpsWcrbj1PzJgxeJ19DRQjhMbKPIuMY8rFaXc8moolVw==
 
 portfinder@^1.0.26:
   version "1.0.28"
@@ -6117,6 +6129,11 @@ readable-stream@^3.0.6, readable-stream@^3.1.1, readable-stream@^3.6.0:
     inherits "^2.0.3"
     string_decoder "^1.1.1"
     util-deprecate "^1.0.1"
+
+readable-web-to-node-stream@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/readable-web-to-node-stream/-/readable-web-to-node-stream-2.0.0.tgz#751e632f466552ac0d5c440cc01470352f93c4b7"
+  integrity sha512-+oZJurc4hXpaaqsN68GoZGQAQIA3qr09Or4fqEsargABnbe5Aau8hFn6ISVleT3cpY/0n/8drn7huyyEvTbghA==
 
 readable-web-to-node-stream@^3.0.0:
   version "3.0.0"
@@ -7216,7 +7233,7 @@ to-arraybuffer@^1.0.0:
   resolved "https://registry.yarnpkg.com/to-arraybuffer/-/to-arraybuffer-1.0.1.tgz#7d229b1fcc637e466ca081180836a7aabff83f43"
   integrity sha1-fSKbH8xjfkZsoIEYCDanqr/4P0M=
 
-to-data-view@^1.0.0:
+to-data-view@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/to-data-view/-/to-data-view-1.1.0.tgz#08d6492b0b8deb9b29bdf1f61c23eadfa8994d00"
   integrity sha512-1eAdufMg6mwgmlojAx3QeMnzB/BTVp7Tbndi3U7ftcT2zCZadjxkkmLmd97zmaxWi+sgGcgWrokmpEoy0Dn0vQ==

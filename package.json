@@ -79,7 +79,7 @@
     "fork-ts-checker-webpack-plugin": "^5.0.4",
     "hard-source-webpack-plugin": "^0.13.1",
     "html-webpack-plugin": "^4.3.0",
-    "icojs": "^0.14.0",
+    "icojs": "^0.16.0",
     "jszip": "^3.5.0",
     "mobx": "5.15.4",
     "mobx-react-lite": "2.2.2",
