@@ -5,11 +5,10 @@
 <div align="center">
 <h1>Chocola</h1>
 
-[![Actions Status](https://github.com/wexond/desktop/workflows/Build/badge.svg)](https://github.com/wexond/desktop/actions)
-[![Downloads](https://img.shields.io/github/downloads/wexond/desktop/total.svg?style=flat-square)](https://github.com/wexond/desktop/releases)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fwexond%2Fwexond.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fwexond%2Fwexond?ref=badge_shield)
-[![PayPal](https://img.shields.io/badge/PayPal-Donate-brightgreen?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCPPFUAL4R6M6&source=url)
-[![Discord](https://discordapp.com/api/guilds/307605794680209409/widget.png?style=shield)](https://discord.gg/P7Vn4VX)
+[![Actions Status](https://github.com/LamkasDev/chocola/workflows/Build/badge.svg)](https://github.com/LamkasDev/chocola/actions)
+[![Downloads](https://img.shields.io/github/downloads/LamkasDev/chocola/total.svg?style=flat-square)](https://github.com/LamkasDev/chocola/releases)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%LamkasDev%chocola.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FLamkasDev%2Fchocola?ref=badge_shield)
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-brightgreen?style=flat-square)](https://www.paypal.me/LamkasDev)
 
 Chocola is an extensible and privacy-focused web browser with a totally different user experience, built on top of `Electron` and `React`. It aims to be fast, private, beautiful, extensible and functional.
 (fork of <a href="https://github.com/wexond/desktop">Wexond</a>)
@@ -31,20 +30,20 @@ Chocola is an extensible and privacy-focused web browser with a totally differen
 
 # Screenshots
 
-![image](https://user-images.githubusercontent.com/11065386/81024159-d9388f80-8e72-11ea-85e7-6c30e3b66554.png)
+![image](https://qtlamkas.why-am-i-he.re/lGtrsa.jpeg)
 
 UI normal variant:
-![image](https://user-images.githubusercontent.com/11065386/81024186-f40b0400-8e72-11ea-976e-cd1ca1b43ad8.png)
+![image](https://qtlamkas.why-am-i-he.re/YCHMdc.png)
 
 UI compact variant:
-![image](https://user-images.githubusercontent.com/11065386/81024222-13099600-8e73-11ea-9fc9-3c63a034403d.png)
-![image](https://user-images.githubusercontent.com/11065386/81024252-2ddc0a80-8e73-11ea-9f2f-6c9a4a175c60.png)
+![image](https://qtlamkas.why-am-i-he.re/ZJKRud.png)
+![image](https://qtlamkas.why-am-i-he.re/xdBOey.png)
 
 # Downloads
-- [Stable and beta versions](https://github.com/wexond/desktop/releases)
-- [Nightlies](https://github.com/wexond/desktop-nightly/releases)
+- [Stable and beta versions](https://github.com/LamkasDev/chocola/releases)
+- [Nightlies](https://github.com/LamkasDev/chocola-nightly/releases)
 
-# [Roadmap](https://github.com/wexond/wexond/projects)
+# [Roadmap](https://github.com/LamkasDev/chocola/projects)
 
 # Contributing
 
@@ -86,4 +85,4 @@ Guides and the API reference are located in [`docs`](docs) directory.
 
 For commercial or proprietary purposes, please contact me on sentialx@gmail.com
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fwexond%2Fwexond.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fwexond%2Fwexond?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FLamkasDev%2Fchocola.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FLamkasDev%2Fchocola?ref=badge_large)
