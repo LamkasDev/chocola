@@ -1,4 +1,4 @@
-# Available keyboard shortcuts in Wexond
+# Available keyboard shortcuts in Chocola
 
 ## Windows and Linux
 
@@ -17,9 +17,9 @@
 | Go forward                  | `Alt + Right Arrow`              |
 | Close selected tab          | `Ctrl + W` or `Ctrl + F4`        |
 | Close current window        | `Ctrl + Shift + W` or `Alt + F4` |
-| Close Wexond                | `Ctrl + Shift + Q`               |
+| Close Chocola                | `Ctrl + Shift + Q`               |
 
-### Wexond feature shortcuts
+### Chocola feature shortcuts
 
 | Action                                  | Shortcut                        |
 | --------------------------------------- | ------------------------------- |
@@ -56,10 +56,10 @@
 | Go forward                  | `⌘ + ]` or `⌘ + Right Arrow` |
 | Close selected tab          | `⌘ + W`                      |
 | Close current window        | `⌘ + Shift + W`              |
-| Hide Wexond                 | `⌘ + H`                      |
-| Close Wexond                | `⌘ + Q`                      |
+| Hide Chocola                 | `⌘ + H`                      |
+| Close Chocola                | `⌘ + Q`                      |
 
-### Wexond feature shortcuts
+### Chocola feature shortcuts
 
 | Action                                  | Shortcut         |
 | --------------------------------------- | ---------------- |

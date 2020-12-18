@@ -5,6 +5,7 @@ import { parse } from 'url';
 import { AppWindow } from '../windows';
 import { Application } from '../application';
 import { showMenuDialog } from '../dialogs/menu';
+import { showMusicDialog } from '../dialogs/music';
 import { PreviewDialog } from '../dialogs/preview';
 import { IFormFillData, IBookmark } from '~/interfaces';
 import { SearchDialog } from '../dialogs/search';
@@ -50,6 +51,10 @@ export const runMessagingService = (appWindow: AppWindow) => {
     showMenuDialog(appWindow.win, x, y);
   });
 
+  ipcMain.on(`show-music-dialog-${id}`, (e, x, y) => {
+    showMusicDialog(appWindow.win, x, y);
+  });
+
   ipcMain.on(`search-show-${id}`, (e, data) => {
     const dialog = Application.instance.dialogs.getPersistent(
       'search',
@@ -83,6 +88,27 @@ export const runMessagingService = (appWindow: AppWindow) => {
 
   ipcMain.on(`find-in-page-${id}`, () => {
     appWindow.send('find');
+  });
+
+  ipcMain.on(`play-id-${id}`, (e, videoID) => {
+    appWindow.send('play-id', videoID);
+  });
+
+  ipcMain.on(`pause-${id}`, (e) => {
+    appWindow.send('pause');
+  });
+
+  ipcMain.on(`goToPos-${id}`, (e, pos) => {
+    appWindow.send('goToPos', pos);
+  });
+
+  let c_info: any;
+  ipcMain.on(`play-update-${id}`, (e, info) => {
+    c_info = info;
+  });
+
+  ipcMain.handle(`play-update-fetch-${id}`, async(e) => {
+    return c_info;
   });
 
   ipcMain.on(`show-add-bookmark-dialog-${id}`, (e, left, top) => {
@@ -154,7 +180,7 @@ export const runMessagingService = (appWindow: AppWindow) => {
 
         if (item && item.type === 'password') {
           item.fields.password = await getPassword(
-            'wexond',
+            'chocola',
             `${hostname}-${item.fields.username}`,
           );
         }
@@ -220,7 +246,7 @@ export const runMessagingService = (appWindow: AppWindow) => {
         );
       }
 
-      await setPassword('wexond', `${hostname}-${username}`, password);
+      await setPassword('chocola', `${hostname}-${username}`, password);
 
       appWindow.send(`has-credentials-${view.id}`, true);
     });
@@ -236,7 +262,7 @@ export const runMessagingService = (appWindow: AppWindow) => {
         },
       });
 
-      await deletePassword('wexond', `${view.hostname}-${fields.username}`);
+      await deletePassword('chocola', `${view.hostname}-${fields.username}`);
 
       appWindow.viewManager.settingsView.webContents.send(
         'credentials-remove',
@@ -247,7 +273,7 @@ export const runMessagingService = (appWindow: AppWindow) => {
     ipcMain.on(
       'credentials-get-password',
       async (e, id: string, account: string) => {
-        const password = await getPassword('wexond', account);
+        const password = await getPassword('chocola', account);
         e.sender.send(id, password);
       },
     );

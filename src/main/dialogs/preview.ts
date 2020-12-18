@@ -38,7 +38,7 @@ export class PreviewDialog extends PersistentDialog {
 
     this.send('visible', true, {
       id,
-      url: url.startsWith('wexond-error') ? errorURL : url,
+      url: url.startsWith('chocola-error') ? errorURL : url,
       title,
       x: this.tab.x - 8,
     });

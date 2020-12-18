@@ -6,10 +6,10 @@ import { ipcMain, app, webContents } from 'electron';
 import { platform } from 'os';
 import { Application } from './application';
 
-export const isNightly = app.name === 'wexond-nightly';
+export const isNightly = app.name === 'chocola-nightly';
 
 app.allowRendererProcessReuse = true;
-app.name = isNightly ? 'Wexond Nightly' : 'Wexond';
+app.name = isNightly ? 'Chocola Nightly' : 'Chocola';
 
 (process.env as any)['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true;
 

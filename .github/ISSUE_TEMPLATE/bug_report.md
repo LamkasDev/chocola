@@ -21,8 +21,8 @@ assignees: ''
 
 **Details:**
  - Operating System: 
- - Wexond version: 
- - Last known working Wexond version: 
+ - Chocola version: 
+ - Last known working Chocola version: 
 
 **Additional context**
 <!-- Add any other context about the problem here. -->

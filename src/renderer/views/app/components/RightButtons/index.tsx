@@ -1,18 +1,20 @@
-import { observer } from 'mobx-react-lite';
-import * as React from 'react';
-import { ipcRenderer, remote } from 'electron';
+import { observer } from "mobx-react-lite";
+import * as React from "react";
+import { ipcRenderer, remote } from "electron";
 
-import { ToolbarButton } from '../ToolbarButton';
-import { BrowserAction } from '../BrowserAction';
+import { ToolbarButton } from "../ToolbarButton";
+import { BrowserAction } from "../BrowserAction";
 import {
   ICON_SHIELD,
   ICON_DOWNLOAD,
   ICON_INCOGNITO,
   ICON_MORE,
-} from '~/renderer/constants/icons';
-import { Buttons, Separator } from './style';
-import store from '../../store';
-import { SiteButtons } from '../SiteButtons';
+  ICON_MUSIC,
+} from "~/renderer/constants/icons";
+import { Buttons, Separator } from "./style";
+import store from "../../store";
+import store2 from "../../../music/store";
+import { SiteButtons } from "../SiteButtons";
 
 let menuRef: HTMLDivElement = null;
 
@@ -27,12 +29,25 @@ const showMenuDialog = async () => {
   ipcRenderer.send(`show-menu-dialog-${store.windowId}`, right, bottom);
 };
 
-ipcRenderer.on('show-menu-dialog', () => {
+const showMusicDialog = async () => {
+  const { right, bottom } = menuRef.getBoundingClientRect();
+  ipcRenderer.send(`show-music-dialog-${store.windowId}`, right, bottom);
+};
+
+ipcRenderer.on("show-menu-dialog", () => {
   showMenuDialog();
+});
+
+ipcRenderer.on("show-music-dialog", () => {
+  showMusicDialog();
 });
 
 const onMenuClick = async () => {
   showMenuDialog();
+};
+
+const onMusicClick = async () => {
+  showMusicDialog();
 };
 
 const BrowserActions = observer(() => {
@@ -55,8 +70,8 @@ const onShieldContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
   const menu = remote.Menu.buildFromTemplate([
     {
       checked: store.settings.object.shield,
-      label: 'Enabled',
-      type: 'checkbox',
+      label: "Enabled",
+      type: "checkbox",
       click: () => {
         store.settings.object.shield = !store.settings.object.shield;
         store.settings.save();
@@ -94,13 +109,23 @@ export const RightButtons = observer(() => {
         opacity={store.settings.object.shield ? 0.87 : 0.54}
         onContextMenu={onShieldContextMenu}
       ></ToolbarButton>
+      {store.settings.object.musicModule && (
+        <ToolbarButton
+          size={16}
+          badge={false}
+          badgeText={"+"}
+          icon={ICON_MUSIC}
+          opacity={store.settings.object.musicModule ? 0.87 : 0.54}
+          onMouseDown={onMusicClick}
+        ></ToolbarButton>
+      )}
 
       {store.downloadsButtonVisible && (
         <ToolbarButton
           size={18}
           badge={store.downloadNotification}
           onMouseDown={onDownloadsClick}
-          toggled={store.dialogsVisibility['downloads-dialog']}
+          toggled={store.dialogsVisibility["downloads-dialog"]}
           icon={ICON_DOWNLOAD}
           badgeTop={9}
           badgeRight={9}
@@ -111,7 +136,7 @@ export const RightButtons = observer(() => {
       {store.isIncognito && <ToolbarButton icon={ICON_INCOGNITO} size={18} />}
       <ToolbarButton
         divRef={(r) => (menuRef = r)}
-        toggled={store.dialogsVisibility['menu']}
+        toggled={store.dialogsVisibility["menu"]}
         badge={store.updateAvailable}
         badgeRight={10}
         badgeTop={6}

@@ -122,7 +122,7 @@ if (
 const settings = ipcRenderer.sendSync('get-settings-sync');
 if (
   window.location.href.startsWith(WEBUI_BASE_URL) ||
-  window.location.protocol === 'wexond-error:'
+  window.location.protocol === 'chocola-error:'
 ) {
   (async function () {
     const w = await webFrame.executeJavaScript('window');

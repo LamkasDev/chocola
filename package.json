@@ -1,5 +1,5 @@
 {
-  "name": "wexond",
+  "name": "chocola",
   "version": "6.0.0-nightly.2",
   "sideEffects": false,
   "description": "Extensible, fast and innovative web browser with material UI.",
@@ -11,15 +11,15 @@
     "mobx",
     "styled-components"
   ],
-  "homepage": "https://github.com/wexond/wexond#readme",
+  "homepage": "https://github.com/LamkasDev/chocola#readme",
   "main": "build/main.bundle.js",
-  "author": "Eryk Rakowski <sentialx@gmail.com>",
+  "author": "LamkasDev <lamkascz1@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wexond/wexond.git"
+    "url": "git+https://github.com/LamkasDev/chocola.git"
   },
   "bugs": {
-    "url": "https://github.com/wexond/wexond/issues"
+    "url": "https://github.com/LamkasDev/chocola/issues"
   },
   "scripts": {
     "dev-renderer": "cross-env DEV=1 webpack-dev-server --config webpack.config.renderer.js",
@@ -64,6 +64,7 @@
     "copy-webpack-plugin": "^6.0.2",
     "cross-env": "7.0.2",
     "crypto-js": "^4.0.0",
+    "devtron": "^1.4.0",
     "electron": "9.3.1",
     "electron-builder": "22.7.0",
     "electron-extensions": "^7.0.0-beta.3",
@@ -104,5 +105,9 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "discord-rpc": "^3.1.4",
+    "updated-youtube-info": "^1.4.7",
+    "youtube-info": "^1.3.2"
+  }
 }

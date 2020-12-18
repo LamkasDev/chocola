@@ -2,7 +2,7 @@ import { DEFAULT_SETTINGS } from './settings';
 
 export const DIRECTORIES = ['adblock', 'extensions', 'storage'];
 
-export const WEBUI_PROTOCOL = 'wexond';
+export const WEBUI_PROTOCOL = 'chocola';
 
 export const WEBUI_BASE_URL =
   process.env.NODE_ENV === 'development'

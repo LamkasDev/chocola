@@ -8,7 +8,7 @@ const extract = promisify(extractZip);
 
 const darkreaderPath = resolve(
   __dirname,
-  '../build/extensions/wexond-darkreader',
+  '../build/extensions/chocola-darkreader',
 );
 
 mkdir(darkreaderPath, { recursive: true }, async err => {

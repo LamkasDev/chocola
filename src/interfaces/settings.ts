@@ -30,4 +30,7 @@ export interface ISettings {
   downloadsPath: string;
   doNotTrack: boolean;
   topBarVariant: TopBarVariant;
+  neko: string;
+  richPresence: boolean;
+  musicModule: boolean;
 }

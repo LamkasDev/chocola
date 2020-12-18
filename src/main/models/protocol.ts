@@ -4,7 +4,7 @@ import { parse } from 'url';
 
 protocol.registerSchemesAsPrivileged([
   {
-    scheme: 'wexond',
+    scheme: 'chocola',
     privileges: {
       bypassCSP: true,
       secure: true,
@@ -18,7 +18,7 @@ protocol.registerSchemesAsPrivileged([
 
 export const registerProtocol = (session: Electron.Session) => {
   session.protocol.registerFileProtocol(
-    'wexond-error',
+    'chocola-error',
     (request, callback: any) => {
       const parsed = parse(request.url);
 
@@ -35,7 +35,7 @@ export const registerProtocol = (session: Electron.Session) => {
 
   if (process.env.NODE_ENV !== 'development') {
     session.protocol.registerFileProtocol(
-      'wexond',
+      'chocola',
       (request, callback: any) => {
         const parsed = parse(request.url);
 

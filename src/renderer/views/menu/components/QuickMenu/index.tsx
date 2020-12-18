@@ -28,7 +28,9 @@ import {
   ICON_DOWNLOAD,
   ICON_FIND,
   ICON_PRINT,
+  ICON_CHOCOLA
 } from '~/renderer/constants/icons';
+import { MenuItemNoPointer } from '~/renderer/views/music/components/QuickMenu/style';
 
 const onFindClick = () => {
   /*
@@ -168,6 +170,10 @@ export const QuickMenu = observer(() => {
             <MenuItemTitle>Print</MenuItemTitle>
             <Shortcut>Ctrl+P</Shortcut>
           </MenuItem>
+          <MenuItemNoPointer>
+            <Icon icon={ICON_CHOCOLA} style={{ filter: "none" }} />
+            <MenuItemTitle>With ❤️ from LamkasDev</MenuItemTitle>
+          </MenuItemNoPointer>
         </MenuItems>
       </Content>
     </div>

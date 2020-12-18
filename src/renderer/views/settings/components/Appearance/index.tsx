@@ -8,37 +8,6 @@ import { onSwitchChange } from '../../utils';
 import { observer } from 'mobx-react-lite';
 import { TopBarVariant } from '~/interfaces';
 
-const onThemeChange = (value: string) => {
-  if (value === 'auto') {
-    store.settings.themeAuto = true;
-  } else {
-    store.settings.themeAuto = false;
-    store.settings.theme = value;
-  }
-
-  store.save();
-};
-
-const ThemeVariant = observer(() => {
-  const defaultValue = store.settings.theme;
-
-  return (
-    <Row>
-      <Title>Theme variant</Title>
-      <Control>
-        <Dropdown
-          defaultValue={store.settings.themeAuto ? 'auto' : defaultValue}
-          onChange={onThemeChange}
-        >
-          <Dropdown.Item value="auto">Auto</Dropdown.Item>
-          <Dropdown.Item value="wexond-light">Light</Dropdown.Item>
-          <Dropdown.Item value="wexond-dark">Dark</Dropdown.Item>
-        </Dropdown>
-      </Control>
-    </Row>
-  );
-});
-
 const onTopBarChange = (value: TopBarVariant) => {
   store.settings.topBarVariant = value;
   store.save();
@@ -107,7 +76,6 @@ export const Appearance = observer(() => {
       {/* <MenuAnimations /> */}
       <BookmarksBar />
       <WarnQuit />
-      <ThemeVariant />
       <TopBarVariant />
     </>
   );

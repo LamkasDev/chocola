@@ -1,6 +1,6 @@
 {
-  "appId": "org.wexond.wexond",
-  "productName": "Wexond",
+  "appId": "org.lamkasdev.chocola",
+  "productName": "Chocola",
   "nsis": {
     "include": "static/installer.nsh"
   },
@@ -43,7 +43,7 @@
   "fileAssociations": [
     {
       "name": "Document",
-      "description": "Wexond",
+      "description": "Chocola",
       "role": "Viewer",
       "ext": "html"
     }

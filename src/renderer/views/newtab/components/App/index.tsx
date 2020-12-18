@@ -31,14 +31,6 @@ const onTuneClick = () => {
   store.dashboardSettingsVisible = !store.dashboardSettingsVisible;
 };
 
-const onRefreshClick = () => {
-  store.image = '';
-  setTimeout(() => {
-    localStorage.setItem('imageDate', '');
-    store.loadImage();
-  }, 50);
-};
-
 export default hot(
   observer(() => {
     return (
@@ -49,7 +41,17 @@ export default hot(
           <Preferences />
 
           <Wrapper fullSize={store.fullSizeImage}>
-            <Image src={store.imageVisible ? store.image : ''}></Image>
+            <Image
+              src={
+                store.imageVisible
+                  ? require(store.image === 1
+                      ? './nekopara1.png'
+                      : store.image === 2
+                      ? './nekopara2.png'
+                      : './nekopara3.png')
+                  : ''
+              }
+            ></Image>
             <Content>{store.topSitesVisible && <TopSites></TopSites>}</Content>
 
             <RightBar>

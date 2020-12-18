@@ -4,6 +4,7 @@ import { ipcRenderer } from 'electron';
 import { ISettings } from '~/interfaces';
 import { DEFAULT_SETTINGS } from '~/constants';
 import { Store } from '.';
+import * as discordRPC from 'discord-rpc';
 
 export type SettingsSection =
   | 'appearance'
@@ -26,6 +27,8 @@ export class SettingsStore {
 
   public store: Store;
 
+  public richPresenceClient: RichPresence;
+
   public constructor(store: Store) {
     this.store = store;
 
@@ -39,6 +42,22 @@ export class SettingsStore {
       if (!firstTime) {
         store.startupTabs.load();
         firstTime = true;
+
+        this.richPresenceClient = new discordRPC.Client({
+          transport: 'websocket',
+        });
+        this.richPresenceClient.login({
+          clientId: '783246918360760320',
+          scopes: ['rpc', 'rpc.api', 'messages.read'],
+        });
+        this.richPresenceClient.on('ready', () => {
+          this.richPresenceClient.setActivity({
+            details: 'Browsing the web...',
+            startTimestamp: Date.now(),
+            largeImageKey: 'chocola',
+            smallImageKey: 'online',
+          });
+        });
       }
     });
   }

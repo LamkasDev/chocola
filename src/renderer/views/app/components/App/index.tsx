@@ -59,6 +59,7 @@ const App = observer(() => {
         <UIStyle />
         <Titlebar />
         {store.settings.object.topBarVariant === 'default' && <Toolbar />}
+        <iframe width="0" height="0" frameBorder="0" id="music-player" style={{ display: "block" }} />
         <BookmarkBar />
       </StyledApp>
       <Line

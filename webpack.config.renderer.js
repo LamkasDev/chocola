@@ -44,6 +44,7 @@ applyEntries('app', appConfig, [
   'auth',
   'find',
   'menu',
+  'music',
   'search',
   'preview',
   'tabgroup',
@@ -58,7 +59,7 @@ if (process.env.ENABLE_EXTENSIONS) {
   ];
   extPopupConfig.plugins.push(
     new HtmlWebpackPlugin({
-      title: 'Wexond',
+      title: 'Chocola',
       template: 'static/pages/extension-popup.html',
       filename: `extension-popup.html`,
       chunks: [`vendor.app`, 'extension-popup'],

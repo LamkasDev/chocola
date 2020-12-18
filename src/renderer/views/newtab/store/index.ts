@@ -3,6 +3,7 @@ import { ISettings, ITheme, IVisitedItem } from '~/interfaces';
 import { getTheme } from '~/utils/themes';
 import { requestURL } from '~/utils/network';
 import { INewsItem } from '~/interfaces/news-item';
+import 'path';
 
 type NewsBehavior = 'on-scroll' | 'always-visible' | 'hidden';
 export type Preset = 'focused' | 'inspirational' | 'informational' | 'custom';
@@ -48,7 +49,6 @@ export class Store {
 
   public set imageVisible(value: boolean) {
     this._imageVisible = value;
-    if (value && this.image == '') this.loadImage();
   }
 
   @computed
@@ -161,10 +161,6 @@ export class Store {
       this.newsBehavior = localStorage.getItem('newsBehavior') as NewsBehavior;
     }
 
-    if (this.imageVisible) {
-      this.loadImage();
-    }
-
     this.loadTopSites();
 
     window.onscroll = () => {
@@ -174,48 +170,8 @@ export class Store {
     window.onresize = () => {
       this.updateNews();
     };
-  }
 
-  public async loadImage() {
-    let url = localStorage.getItem('imageURL');
-    let isNewUrl = false;
-
-    if (this.changeImageDaily) {
-      const dateString = localStorage.getItem('imageDate');
-
-      if (dateString && dateString !== '') {
-        const date = new Date(dateString);
-        const date2 = new Date();
-        const diffTime = Math.floor(
-          (date2.getTime() - date.getTime()) / (1000 * 60 * 60 * 24),
-        );
-
-        if (diffTime > 1) {
-          url = '';
-          isNewUrl = true;
-        }
-      }
-    }
-
-    if (!url || url == '') {
-      url = 'https://picsum.photos/1920/1080';
-      isNewUrl = true;
-    }
-
-    fetch(url)
-      .then((response) => Promise.all([response.url, response.blob()]))
-      .then(([resource, blob]) => {
-        this.image = URL.createObjectURL(blob);
-
-        return resource;
-      })
-      .then((imgUrl) => {
-        if (isNewUrl) {
-          localStorage.setItem('imageURL', imgUrl);
-          localStorage.setItem('imageDate', new Date().toString());
-        }
-      })
-      .catch((e) => console.error(e));
+    this.image = Math.floor(Math.random() * 3);
   }
 
   public async updateNews() {

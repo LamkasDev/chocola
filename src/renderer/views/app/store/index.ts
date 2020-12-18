@@ -17,6 +17,7 @@ import { IBrowserAction } from '../models';
 import { NEWTAB_URL } from '~/constants/tabs';
 import { IURLSegment } from '~/interfaces/urls';
 import { BookmarkBarStore } from './bookmark-bar';
+import * as fetchVideoInfo from 'updated-youtube-info';
 
 export class Store {
   public settings = new SettingsStore(this);
@@ -73,7 +74,7 @@ export class Store {
 
     const url = this.addressbarValue;
 
-    const whitelistedProtocols = ['https', 'http', 'ftp', 'wexond'];
+    const whitelistedProtocols = ['https', 'http', 'ftp', 'chocola'];
 
     for (let i = 0; i < url.length; i++) {
       const protocol = whitelistedProtocols.find(
@@ -152,9 +153,14 @@ export class Store {
   @observable
   public zoomFactor = 1;
 
+  public elapsed = 0;
+  public lastInfo: any;
+  public paused = true;
+
   @observable
   public dialogsVisibility: { [key: string]: boolean } = {
     menu: false,
+    music: false,
     'add-bookmark': false,
     zoom: false,
     'extension-popup': false,
@@ -220,6 +226,39 @@ export class Store {
     ipcRenderer.on('is-bookmarked', (e, flag) => {
       this.isBookmarked = flag;
     });
+
+    ipcRenderer.on('play-id', async(e, id) => {
+      const iframe = <HTMLIFrameElement>document.getElementById("music-player");
+      const info = await fetchVideoInfo(id);
+      iframe.src = "https://www.youtube.com/embed/" + info.videoId + "?autoplay=1";
+
+      this.paused = false;
+      this.lastInfo = info;
+      this.elapsed = 0;
+    })
+
+    ipcRenderer.on('pause', (e) => {
+      const iframe = <HTMLIFrameElement>document.getElementById("music-player");
+      if(this.paused) {
+        const diff = Math.round((this.elapsed)/1000)*1000;
+        iframe.src = "https://www.youtube.com/embed/" + this.lastInfo.videoId + "?autoplay=1&start=" + (diff/1000);
+      } else {
+        const iframe = <HTMLIFrameElement>document.getElementById("music-player");
+        iframe.src = "";
+      }
+
+      this.paused = !this.paused;
+    })
+
+    ipcRenderer.on('goToPos', (e, pos) => {
+      pos += 0.33;
+      const iframe = <HTMLIFrameElement>document.getElementById("music-player");
+      const newElapsed = Math.round((this.lastInfo.duration*pos)*1000);
+      this.elapsed = newElapsed;
+      const diff = Math.round((this.elapsed)/1000)*1000;
+
+      iframe.src = "https://www.youtube.com/embed/" + this.lastInfo.videoId + "?autoplay=1&start=" + (diff/1000);
+    })
 
     ipcRenderer.on(
       'download-completed',
@@ -322,6 +361,16 @@ export class Store {
       );
       ipcRenderer.send('load-extensions');
     }
+
+    setInterval(() => {
+      if(this.paused === false && this.elapsed < this.lastInfo.duration * 1000) {
+        this.elapsed += 100;
+      }
+
+      const diff = Math.round((this.elapsed)/1000)*1000;
+      const info = { videoInfo: this.lastInfo, playInfo: { val: (diff/1000), max: (this.lastInfo === undefined ? 0 : this.lastInfo.duration), paused: this.paused }};
+      ipcRenderer.send(`play-update-${this.windowId}`, info);
+    }, 100)
 
     ipcRenderer.send('update-check');
   }

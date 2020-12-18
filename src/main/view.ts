@@ -68,7 +68,7 @@ export class View {
 
     // USER-AGENT:
     this.webContents.userAgent = this.webContents.userAgent
-      .replace(/ Wexond\\?.([^\s]+)/g, '')
+      .replace(/ Chocola\\?.([^\s]+)/g, '')
       .replace(/ Electron\\?.([^\s]+)/g, '')
       .replace(/Chrome\\?.([^\s]+)/g, 'Chrome/83.0.4103.97');
 
@@ -178,7 +178,7 @@ export class View {
         if (isMainFrame && errorCode !== -3) {
           this.errorURL = validatedURL;
 
-          this.webContents.loadURL(`wexond-error://network-error/${errorCode}`);
+          this.webContents.loadURL(`chocola-error://network-error/${errorCode}`);
         }
       },
     );
@@ -313,7 +313,7 @@ export class View {
     if (
       url !== this.lastUrl &&
       !url.startsWith(WEBUI_BASE_URL) &&
-      !url.startsWith('wexond-error://') &&
+      !url.startsWith('chocola-error://') &&
       !this.incognito
     ) {
       const historyItem: IHistoryItem = {

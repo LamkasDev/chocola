@@ -103,4 +103,8 @@ export class Application {
       }
     });
   }
+
+  public play(url) {
+    console.log(url);
+  }
 }

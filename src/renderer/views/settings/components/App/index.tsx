@@ -4,6 +4,8 @@ import { hot } from 'react-hot-loader/root';
 
 import { SettingsSection } from '../../store';
 import { Appearance } from '../Appearance';
+import { Themes } from '../Themes';
+import { Other } from '../Other';
 import { AddressBar, ManageSearchEngines } from '../AddressBar';
 import { Privacy } from '../Privacy';
 import store from '../../store';
@@ -24,6 +26,7 @@ import {
   ICON_SHIELD,
   ICON_TRASH,
   ICON_EDIT,
+  ICON_THEMES,
 } from '~/renderer/constants';
 import {
   ContextMenuItem,
@@ -259,6 +262,10 @@ export default hot(
             <MenuItem icon={ICON_SHIELD} section="privacy">
               Privacy
             </MenuItem>
+            <MenuItem icon={ICON_THEMES} section="themes">
+              Themes
+            </MenuItem>
+            <MenuItem section="other">Other</MenuItem>
             {/* <MenuItem section="permissions">Site permissions</MenuItem> */}
 
             {/* <MenuItem section="language">Languages</MenuItem> */}
@@ -275,6 +282,8 @@ export default hot(
               {selectedSection === 'startup' && <OnStartup />}
               {selectedSection === 'privacy' && <Privacy />}
               {selectedSection === 'downloads' && <Downloads />}
+              {selectedSection === 'themes' && <Themes />}
+              {selectedSection === 'other' && <Other />}
             </LeftContent>
           </Content>
         </Container>
