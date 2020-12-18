@@ -118,10 +118,14 @@ export class Store extends DialogStore {
 
   public play() {
     const url = this.musicRef.current.value;
-    let videoID = url.substring(url.indexOf("watch?v=") + "watch?v=".length);
-    if(videoID.includes("&")) { videoID = videoID.substring(0, videoID.indexOf("&")); }
+    if(url.includes("playlist")) {
+      ipcRenderer.send(`play-list-${this.windowId}`, url)
+    } else {
+      let videoID = url.substring(url.indexOf("watch?v=") + "watch?v=".length);
+      if(videoID.includes("&")) { videoID = videoID.substring(0, videoID.indexOf("&")); }
 
-    ipcRenderer.send(`play-id-${this.windowId}`, videoID)
+      ipcRenderer.send(`play-id-${this.windowId}`, videoID)
+    }
   }
 
   public pause() {

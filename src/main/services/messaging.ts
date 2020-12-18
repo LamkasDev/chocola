@@ -94,6 +94,10 @@ export const runMessagingService = (appWindow: AppWindow) => {
     appWindow.send('play-id', videoID);
   });
 
+  ipcMain.on(`play-list-${id}`, (e, url) => {
+    appWindow.send('play-list', url);
+  });
+
   ipcMain.on(`pause-${id}`, (e) => {
     appWindow.send('pause');
   });

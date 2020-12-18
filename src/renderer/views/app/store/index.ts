@@ -18,6 +18,7 @@ import { NEWTAB_URL } from '~/constants/tabs';
 import { IURLSegment } from '~/interfaces/urls';
 import { BookmarkBarStore } from './bookmark-bar';
 import * as fetchVideoInfo from 'updated-youtube-info';
+import * as fetchVideoList from 'ytpl';
 
 export class Store {
   public settings = new SettingsStore(this);
@@ -226,6 +227,21 @@ export class Store {
     ipcRenderer.on('is-bookmarked', (e, flag) => {
       this.isBookmarked = flag;
     });
+
+    ipcRenderer.on('play-list', async(e, url) => {
+      const listInfo = await fetchVideoList(url);
+
+      for(let i = 0; i < listInfo.items.length; i++) {
+        const id = listInfo.items[i].id;
+
+        const info = await fetchVideoInfo(id);
+        this.queue.push(info);
+        if(this.queue.length === 1) { this.playQueue(); }
+      }
+
+      console.log(url)
+      console.log(JSON.stringify(listInfo))
+    })
 
     ipcRenderer.on('play-id', async(e, id) => {
       const info = await fetchVideoInfo(id);
