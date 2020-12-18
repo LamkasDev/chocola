@@ -3,9 +3,7 @@
 </p>
 
 <div align="center">
-<font size="30">Chocola </font>
-<font>(fork of Vexond)</font>
-<h2></h2>
+<h1>Chocola</h1>
 
 [![Actions Status](https://github.com/wexond/desktop/workflows/Build/badge.svg)](https://github.com/wexond/desktop/actions)
 [![Downloads](https://img.shields.io/github/downloads/wexond/desktop/total.svg?style=flat-square)](https://github.com/wexond/desktop/releases)
@@ -14,6 +12,7 @@
 [![Discord](https://discordapp.com/api/guilds/307605794680209409/widget.png?style=shield)](https://discord.gg/P7Vn4VX)
 
 Chocola is an extensible and privacy-focused web browser with a totally different user experience, built on top of `Electron` and `React`. It aims to be fast, private, beautiful, extensible and functional.
+(fork of <a href="https://github.com/wexond/desktop">Wexond</a>)
 
 </div>
 
