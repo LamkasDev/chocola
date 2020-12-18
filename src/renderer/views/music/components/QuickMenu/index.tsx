@@ -12,7 +12,7 @@ import {
   Icon,
   MenuItemTitle
 } from './style';
-import { ICON_PLAY_START, ICON_VIEWS, ICON_LIKE } from '~/renderer/constants/icons';
+import { ICON_PLAY_START, ICON_VIEWS, ICON_LIKE, ICON_SKIP } from '~/renderer/constants/icons';
 import store from '../../store';
 
 const onFindClick = () => {
@@ -37,6 +37,10 @@ const goToPos = (pos) => {
   store.goToPos(pos);
 };
 
+const skip = () => {
+  store.skip();
+};
+
 export const QuickMenu = observer(() => {
   return (
     <div
@@ -53,12 +57,16 @@ export const QuickMenu = observer(() => {
           </MenuItemNoPointer>
           <MenuItem onClick={play} style={{ marginTop: "10px", marginBottom: "10px" }}>
             <Icon icon={ICON_PLAY_START} />
-            <MenuItemTitle>Play</MenuItemTitle>
+            <div id="music-queue" style={{ flex: 1 }}>Add to queue</div>
           </MenuItem>
           <Line style={{ marginTop: "10px", marginBottom: "10px" }} />
-          <MenuItem onClick={pause}>
-          <Icon id="music-pause-icon" />
+          <MenuItem id="music-pause-item" onClick={pause}>
+            <Icon id="music-pause-icon" />
             <div id="music-pause" style={{ flex: 1 }}>Pause/Resume</div>
+          </MenuItem>
+          <MenuItem id="music-skip-item" onClick={skip}>
+            <Icon icon={ICON_SKIP} />
+            <div id="music-skip" style={{ flex: 1 }}>Skip</div>
           </MenuItem>
           <Line style={{ marginTop: "10px", marginBottom: "10px" }} />
           <MenuItemNoPointer>

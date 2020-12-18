@@ -153,8 +153,8 @@ export class Store {
   @observable
   public zoomFactor = 1;
 
+  public queue: any[] = [];
   public elapsed = 0;
-  public lastInfo: any;
   public paused = true;
 
   @observable
@@ -228,36 +228,34 @@ export class Store {
     });
 
     ipcRenderer.on('play-id', async(e, id) => {
-      const iframe = <HTMLIFrameElement>document.getElementById("music-player");
       const info = await fetchVideoInfo(id);
-      iframe.src = "https://www.youtube.com/embed/" + info.videoId + "?autoplay=1";
-
-      this.paused = false;
-      this.lastInfo = info;
-      this.elapsed = 0;
+      this.queue.push(info);
+      if(this.queue.length === 1) { this.playQueue(); }
     })
 
     ipcRenderer.on('pause', (e) => {
-      const iframe = <HTMLIFrameElement>document.getElementById("music-player");
       if(this.paused) {
-        const diff = Math.round((this.elapsed)/1000)*1000;
-        iframe.src = "https://www.youtube.com/embed/" + this.lastInfo.videoId + "?autoplay=1&start=" + (diff/1000);
+        this.playQueue();
       } else {
-        const iframe = <HTMLIFrameElement>document.getElementById("music-player");
-        iframe.src = "";
+        this.stopPlaying();
       }
-
-      this.paused = !this.paused;
     })
 
     ipcRenderer.on('goToPos', (e, pos) => {
-      pos += 0.33;
-      const iframe = <HTMLIFrameElement>document.getElementById("music-player");
-      const newElapsed = Math.round((this.lastInfo.duration*pos)*1000);
-      this.elapsed = newElapsed;
-      const diff = Math.round((this.elapsed)/1000)*1000;
+      this.stopPlaying();
 
-      iframe.src = "https://www.youtube.com/embed/" + this.lastInfo.videoId + "?autoplay=1&start=" + (diff/1000);
+      pos += 0.33;
+      const newElapsed = Math.round((this.queue[0].duration*pos)*1000);
+      this.elapsed = newElapsed;
+      this.playQueue();
+    })
+
+    ipcRenderer.on('skip', (e) => {
+      this.stopPlaying();
+
+      this.elapsed = 0;
+      this.queue.shift();
+      if(this.queue.length > 0) { this.playQueue(); }
     })
 
     ipcRenderer.on(
@@ -363,16 +361,34 @@ export class Store {
     }
 
     setInterval(() => {
-      if(this.paused === false && this.elapsed < this.lastInfo.duration * 1000) {
+      //Progress timer if playing
+      if(this.paused === false && this.elapsed < this.queue[0].duration * 1000) {
         this.elapsed += 100;
       }
 
+      //If queue is over stop playing
+      if(this.paused === false && this.queue.length === 0) { this.stopPlaying(); }
+
+      //Send video info update
       const diff = Math.round((this.elapsed)/1000)*1000;
-      const info = { videoInfo: this.lastInfo, playInfo: { val: (diff/1000), max: (this.lastInfo === undefined ? 0 : this.lastInfo.duration), paused: this.paused }};
+      const info = { queue: this.queue, playInfo: { val: (diff/1000), max: (this.queue[0] === undefined ? 0 : this.queue[0].duration), paused: this.paused }};
       ipcRenderer.send(`play-update-${this.windowId}`, info);
     }, 100)
 
     ipcRenderer.send('update-check');
+  }
+
+  private playQueue() {
+    const iframe = <HTMLIFrameElement>document.getElementById("music-player");
+    const diff = Math.round((this.elapsed)/1000)*1000;
+    iframe.src = "https://www.youtube.com/embed/" + this.queue[0].videoId + "?autoplay=1&start=" + (diff/1000);
+    this.paused = false;
+  }
+
+  private stopPlaying() {
+    const iframe = <HTMLIFrameElement>document.getElementById("music-player");
+    iframe.src = "";
+    this.paused = true;
   }
 }
 

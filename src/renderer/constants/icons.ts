@@ -13,6 +13,7 @@ export const ICON_EXTENSIONS = require('~/renderer/resources/icons/extensions.sv
 export const ICON_MUSIC = require('~/renderer/resources/icons/note.png');
 export const ICON_PLAY = require('~/renderer/resources/icons/play.png');
 export const ICON_PLAY_START = require('~/renderer/resources/icons/play_start.png');
+export const ICON_SKIP = require('~/renderer/resources/icons/skip.png');
 export const ICON_VIEWS = require('~/renderer/resources/icons/eye.png');
 export const ICON_LIKE = require('~/renderer/resources/icons/like.png');
 export const ICON_PAUSE = require('~/renderer/resources/icons/pause.png');

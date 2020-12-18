@@ -102,6 +102,10 @@ export const runMessagingService = (appWindow: AppWindow) => {
     appWindow.send('goToPos', pos);
   });
 
+  ipcMain.on(`skip-${id}`, (e) => {
+    appWindow.send('skip');
+  });
+
   let c_info: any;
   ipcMain.on(`play-update-${id}`, (e, info) => {
     c_info = info;

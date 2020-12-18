@@ -28,35 +28,51 @@ export class Store extends DialogStore {
     }, 100)
   }
 
-  public async updateProgress() {
+  public updateProgress() {
     ipcRenderer.invoke(`play-update-fetch-${this.windowId}`).then((result) => {
       if(result === undefined) { return; }
 
       try {
-        const progress = <HTMLProgressElement>document.getElementById("music-progress");
-        const progressText = <HTMLDivElement>document.getElementById("music-progress-text");
-        progress.value = result.playInfo.val;
-        progress.max = result.playInfo.max;
-        progressText.innerHTML = this.formatTime(result.playInfo.val*1000) + "/" + this.formatTime(result.playInfo.max*1000);
-
         const title = <HTMLDivElement>document.getElementById("music-title");
         const pause = <HTMLDivElement>document.getElementById("music-pause");
         const pauseIcon = <HTMLDivElement>document.getElementById("music-pause-icon");
         const views = <HTMLDivElement>document.getElementById("music-views");
         const likes = <HTMLDivElement>document.getElementById("music-likes");
-        if(result.videoInfo !== undefined) {
-          title.innerHTML = "Playing - " + result.videoInfo.title;
+        const queue = <HTMLDivElement>document.getElementById("music-queue");
+        //const skip = <HTMLDivElement>document.getElementById("music-skip");
+        const progress = <HTMLDivElement>document.getElementById("music-progress-text");
+
+        const progressItem = <HTMLProgressElement>document.getElementById("music-progress");
+        const pauseItem = <HTMLDivElement>document.getElementById("music-pause-item");
+        const skipItem = <HTMLDivElement>document.getElementById("music-skip-item");
+
+        progressItem.value = result.playInfo.val;
+        progressItem.max = result.playInfo.max;
+
+        if(result.queue[0] !== undefined) {
+          title.innerHTML = "Playing - " + result.queue[0].title;
           pause.innerHTML = result.playInfo.paused ? "Resume" : "Pause";
           pauseIcon.style.backgroundImage = result.playInfo.paused ? "url(" + ICON_PLAY + ")" : "url(" + ICON_PAUSE + ")";
-          views.innerHTML = result.videoInfo.views.toLocaleString();
-          likes.innerHTML = result.videoInfo.likeCount.toLocaleString();
+          views.innerHTML = result.queue[0].views.toLocaleString();
+          likes.innerHTML = result.queue[0].likeCount.toLocaleString();
+
+          pauseItem.style.cssText = "";
+          skipItem.style.cssText = "";
+          progressItem.style.cssText = "";
         } else {
           title.innerHTML = "Not playing";
           pause.innerHTML = "Pause/Resume";
           pauseIcon.style.backgroundImage = "url(" + ICON_PLAY + ")";
           views.innerHTML = "0";
           likes.innerHTML = "0";
+
+          pauseItem.style.cssText = "pointer-events: none; filter: brightness(0.5);";
+          skipItem.style.cssText = "pointer-events: none; filter: brightness(0.5);";
+          progressItem.style.cssText = "pointer-events: none; filter: brightness(0.5);";
         }
+
+        queue.innerHTML = "Add to queue (" + result.queue.length + " in queue)";
+        progress.innerHTML = this.formatTime(result.playInfo.val*1000) + "/" + this.formatTime(result.playInfo.max*1000);
       } catch(e) {
         alert(e);
       }
@@ -100,30 +116,24 @@ export class Store extends DialogStore {
     });
   }
 
-  public async play() {
-    try {
-      const url = this.musicRef.current.value;
-      const videoID = url.substring(url.indexOf("watch?v=") + "watch?v=".length);
-      ipcRenderer.send(`play-id-${this.windowId}`, videoID)
-    } catch(e) {
-      alert(e);
-    }
+  public play() {
+    const url = this.musicRef.current.value;
+    let videoID = url.substring(url.indexOf("watch?v=") + "watch?v=".length);
+    if(videoID.includes("&")) { videoID = videoID.substring(0, videoID.indexOf("&")); }
+
+    ipcRenderer.send(`play-id-${this.windowId}`, videoID)
   }
 
-  public async pause() {
-    try {
-      ipcRenderer.send(`pause-${this.windowId}`)
-    } catch(e) {
-      alert(e);
-    }
+  public pause() {
+    ipcRenderer.send(`pause-${this.windowId}`)
   }
 
-  public async goToPos(pos) {
-    try {
-      ipcRenderer.send(`goToPos-${this.windowId}`, pos)
-    } catch(e) {
-      alert(e);
-    }
+  public goToPos(pos) {
+    ipcRenderer.send(`goToPos-${this.windowId}`, pos)
+  }
+
+  public skip() {
+    ipcRenderer.send(`skip-${this.windowId}`)
   }
 }
 
