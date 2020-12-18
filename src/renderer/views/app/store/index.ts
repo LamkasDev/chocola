@@ -19,6 +19,7 @@ import { IURLSegment } from '~/interfaces/urls';
 import { BookmarkBarStore } from './bookmark-bar';
 import * as fetchVideoInfo from 'updated-youtube-info';
 import * as fetchVideoList from 'ytpl';
+import { ICON_SEARCH, ICON_SECURE, ICON_UNSECURE } from '~/renderer/constants';
 
 export class Store {
   public settings = new SettingsStore(this);
@@ -391,6 +392,14 @@ export class Store {
     }, 100)
 
     ipcRenderer.send('update-check');
+  }
+
+  public getAdressBarIcon() {
+    return this.tabs.selectedTab === undefined || this.tabs.selectedTab.url === "http://localhost:4445/newtab.html" ? ICON_SEARCH: (this.tabs.selectedTab.url.startsWith("https://") ? ICON_SECURE : ICON_UNSECURE);
+  }
+
+  public getAdressBarIconInvert() {
+    return this.tabs.selectedTab === undefined || this.tabs.selectedTab.url === "http://localhost:4445/newtab.html" ? true : false;
   }
 
   private playQueue() {

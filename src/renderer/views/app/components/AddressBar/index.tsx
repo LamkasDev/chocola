@@ -7,7 +7,6 @@ import { callViewMethod } from '~/utils/view';
 import { ipcRenderer } from 'electron';
 import { ToolbarButton } from '../ToolbarButton';
 import { StyledAddressBar, InputContainer, Input, Text } from './style';
-import { ICON_SEARCH } from '~/renderer/constants';
 import { SiteButtons } from '../SiteButtons';
 import { DEFAULT_TITLEBAR_HEIGHT } from '~/constants/design';
 
@@ -130,9 +129,9 @@ export const AddressBar = observer(() => {
     >
       <ToolbarButton
         toggled={false}
-        icon={ICON_SEARCH}
+        icon={store.getAdressBarIcon()}
         size={16}
-        dense
+        autoInvert={store.getAdressBarIconInvert()}
         iconStyle={{ transform: 'scale(-1,1)' }}
       />
       <InputContainer>
