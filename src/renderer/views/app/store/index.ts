@@ -267,11 +267,7 @@ export class Store {
     })
 
     ipcRenderer.on('skip', (e) => {
-      this.stopPlaying();
-
-      this.elapsed = 0;
-      this.queue.shift();
-      if(this.queue.length > 0) { this.playQueue(); }
+      this.skipPlaying();
     })
 
     ipcRenderer.on(
@@ -385,6 +381,9 @@ export class Store {
       //If queue is over stop playing
       if(this.paused === false && this.queue.length === 0) { this.stopPlaying(); }
 
+      //If video is over play another one
+      if(this.elapsed >= this.queue[0].duration * 1000) { this.skipPlaying(); }
+
       //Send video info update
       const diff = Math.round((this.elapsed)/1000)*1000;
       const info = { queue: this.queue, playInfo: { val: (diff/1000), max: (this.queue[0] === undefined ? 0 : this.queue[0].duration), paused: this.paused }};
@@ -405,6 +404,14 @@ export class Store {
     const iframe = <HTMLIFrameElement>document.getElementById("music-player");
     iframe.src = "";
     this.paused = true;
+  }
+
+  private skipPlaying() {
+    this.stopPlaying();
+
+    this.elapsed = 0;
+    this.queue.shift();
+    if(this.queue.length > 0) { this.playQueue(); }
   }
 }
 
