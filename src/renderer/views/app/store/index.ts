@@ -382,7 +382,7 @@ export class Store {
       if(this.paused === false && this.queue.length === 0) { this.stopPlaying(); }
 
       //If video is over play another one
-      if(this.elapsed >= this.queue[0].duration * 1000) { this.skipPlaying(); }
+      if(this.queue.length > 0 && this.elapsed >= this.queue[0].duration * 1000) { this.skipPlaying(); }
 
       //Send video info update
       const diff = Math.round((this.elapsed)/1000)*1000;
