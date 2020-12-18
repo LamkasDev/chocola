@@ -452,13 +452,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-native@*":
-  version "0.63.41"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.63.41.tgz#edbb25d9b5b9f7288b61ef4763f3a11eb658ec24"
-  integrity sha512-9w7Il4S2cKJvP/2ZWO66O+9/U8dBCcgycbnIpjsrP4DlN4UTw9VXjSGWSICXh4UNXScKyKWg8FoXkz7fI9ZVWQ==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react@*":
   version "17.0.0"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.0.tgz#5af3eb7fad2807092f0046a1302b7823e27919b8"
@@ -485,15 +478,14 @@
   resolved "https://registry.yarnpkg.com/@types/source-list-map/-/source-list-map-0.1.2.tgz#0078836063ffaf17412349bba364087e0ac02ec9"
   integrity sha512-K5K+yml8LTo9bWJI/rECfIPrGgxdpeNbj+d53lwN4QjW1MCwlkhUms+gtdzigTeUyBr09+u8BwOIY3MXvHdcsA==
 
-"@types/styled-components@5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.0.tgz#24d3412ba5395aa06e14fbc93c52f9454cebd0d6"
-  integrity sha512-ZFlLCuwF5r+4Vb7JUmd+Yr2S0UBdBGmI7ctFTgJMypIp3xOHI4LCFVn2dKMvpk6xDB2hLRykrEWMBwJEpUAUIQ==
+"@types/styled-components@5.1.7":
+  version "5.1.7"
+  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.7.tgz#3cd10b088c1cb1acde2e4b166b3e8275a3083710"
+  integrity sha512-BJzPhFygYspyefAGFZTZ/8lCEY4Tk+Iqktvnko3xmJf9LrLqs3+grxPeU3O0zLl6yjbYBopD0/VikbHgXDbJtA==
   dependencies:
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
-    "@types/react-native" "*"
-    csstype "^2.2.0"
+    csstype "^3.0.2"
 
 "@types/tapable@*", "@types/tapable@^1.0.5":
   version "1.0.6"
@@ -7955,17 +7947,6 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
-
-youtube-info@^1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/youtube-info/-/youtube-info-1.3.2.tgz#d9d2d7401ae61b1b9dc366a713629177608f0fee"
-  integrity sha512-LnBZxCuCof0bwFNtLSxklLYgaU1XR8OK+cGieWyPS10rn3P0TMHdIikRpO/W/duE9SR9JfzOk8ThgwDgx0B3Vw==
-  dependencies:
-    cheerio "^0.19.0"
-    debug "^2.2.0"
-    lodash.isfunction "^3.0.6"
-    request "2.81.0"
-    request-promise "^4.2.2"
 
 ytpl@^2.0.3:
   version "2.0.3"
