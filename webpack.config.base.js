@@ -1,7 +1,7 @@
 /* eslint-disable */
 const { resolve, join } = require('path');
 const { writeFileSync, readFileSync, existsSync } = require('fs');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
