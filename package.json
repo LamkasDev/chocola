@@ -62,7 +62,7 @@
     "cache-loader": "^4.1.0",
     "concurrently": "^5.2.0",
     "copy-webpack-plugin": "^6.0.2",
-    "cross-env": "7.0.2",
+    "cross-env": "7.0.3",
     "crypto-js": "^4.0.0",
     "devtron": "^1.4.0",
     "electron": "11.1.0",
