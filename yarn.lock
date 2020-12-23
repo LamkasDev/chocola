@@ -7974,9 +7974,9 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-ytpl@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/ytpl/-/ytpl-2.0.3.tgz#7853b8c9d30e8f3165f667758a0e2057bac761ad"
-  integrity sha512-E5nH0gULzpXAh7rcj6X7I8MK0L8hiprzZzsxTc/OPZDcYF53Z7O5IbU1vgMYzEmVsPtTLEWejT2HUWdjlgaCSQ==
+ytpl@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/ytpl/-/ytpl-2.0.4.tgz#24188190f627d328146542b6cf093c770ae947b7"
+  integrity sha512-lXm3LvFvs2RixD6PTDay5jXRhaMSo/Upw7P60/FgQFvNrgSYRwMpR3nB1v3scu84R2XcS6kuENhPD2M4x/920A==
   dependencies:
     miniget "^4.1.0"
