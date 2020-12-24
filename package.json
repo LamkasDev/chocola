@@ -86,7 +86,7 @@
     "node-bookmarks-parser": "^2.0.0",
     "node-fetch": "^2.6.1",
     "prettier": "2.0.5",
-    "pretty-bytes": "5.4.1",
+    "pretty-bytes": "5.5.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-hot-loader": "4.13.0",
