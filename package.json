@@ -79,7 +79,7 @@
     "hard-source-webpack-plugin": "^0.13.1",
     "html-webpack-plugin": "^4.3.0",
     "icojs": "^0.16.0",
-    "jszip": "^3.5.0",
+    "jszip": "^3.6.0",
     "mobx": "5.15.7",
     "mobx-react-lite": "2.2.2",
     "nedb": "1.8.0",
