@@ -92,7 +92,7 @@
     "react-hot-loader": "4.13.0",
     "react-windows-controls": "1.1.1",
     "source-map-support": "^0.5.19",
-    "styled-components": "^5.1.1",
+    "styled-components": "^5.2.3",
     "terser": "^4.8.0",
     "terser-webpack-plugin": "^4.2.3",
     "ts-loader": "^8.0.12",
