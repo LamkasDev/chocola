@@ -95,7 +95,7 @@
     "styled-components": "^5.1.1",
     "terser": "^4.8.0",
     "terser-webpack-plugin": "^4.2.3",
-    "ts-loader": "^8.0.12",
+    "ts-loader": "^9.1.2",
     "typescript": "^3.9.5",
     "typescript-plugin-styled-components": "^1.4.4",
     "webpack": "4.44.2",
