@@ -85,7 +85,7 @@
     "nedb": "1.8.0",
     "node-bookmarks-parser": "^2.0.0",
     "node-fetch": "^2.6.1",
-    "prettier": "2.0.5",
+    "prettier": "2.3.0",
     "pretty-bytes": "5.4.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
