@@ -46,7 +46,7 @@
     "@types/chrome": "0.0.127",
     "@types/crypto-js": "^4.0.1",
     "@types/extract-zip": "^1.6.2",
-    "@types/gsap": "1.20.2",
+    "@types/gsap": "3.0.0",
     "@types/jszip": "^3.4.1",
     "@types/nedb": "1.8.11",
     "@types/node": "14.14.14",
