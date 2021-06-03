@@ -43,7 +43,7 @@
   "devDependencies": {
     "@cliqz/adblocker-electron": "1.19.0",
     "@types/animejs": "^3.1.1",
-    "@types/chrome": "0.0.127",
+    "@types/chrome": "0.0.144",
     "@types/crypto-js": "^4.0.1",
     "@types/extract-zip": "^1.6.2",
     "@types/gsap": "1.20.2",
