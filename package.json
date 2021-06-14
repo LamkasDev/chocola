@@ -105,7 +105,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "discord-rpc": "^3.1.4",
+    "discord-rpc": "^4.0.1",
     "updated-youtube-info": "^1.4.7",
     "ytpl": "^2.0.3"
   }
