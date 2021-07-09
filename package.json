@@ -48,7 +48,7 @@
     "@types/extract-zip": "^1.6.2",
     "@types/gsap": "1.20.2",
     "@types/jszip": "^3.4.1",
-    "@types/nedb": "1.8.11",
+    "@types/nedb": "1.8.12",
     "@types/node": "14.14.14",
     "@types/node-fetch": "^2.5.7",
     "@types/react": "17.0.0",
